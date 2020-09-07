@@ -42,15 +42,15 @@ Ou
 4. ```cd path/Grafos1_Metro-BSB```
 
 ## Uso 
-1. No diretório do projeto, execute, com Python 3.X, o arquivo de extensão .py com o comando: <br>
-```python3 Metro-BSB.py```
-2. Se a instalação foi bem sucedida, a seguinte janela foi aberta: <br>
+1. No diretório do projeto, execute, com Python 3.X, o arquivo de extensão .py com o comando: <br><br>
+```python3 Metro-BSB.py``` <br>
+<br>2. Se a instalação foi bem sucedida, a seguinte janela foi aberta: <br><br>
 ![](Main.png) <br>
-3. Tendo a imagem do sistema metroviário de Brasília como referência visual, escolha a estação/parada da qual se deseja iniciar as buscas no grafo. <br>
+<br>3. Tendo a imagem do sistema metroviário de Brasília como referência visual, escolha a estação/parada da qual se deseja iniciar as buscas no grafo. <br><br>
 ![](Select.png) <br>
-4. Clique na caixa "Fazer Buscas BFS e DFS" para executar os algortimos, os quais retornarão a ordem na qual as estações foram visitadas pelos respectivos algoritmos <br>
+<br>4. Clique na caixa "Fazer Buscas BFS e DFS" para executar os algortimos, os quais retornarão a ordem na qual as estações foram visitadas pelos respectivos algoritmos <br><br>
 ![](End.png) <br>
-5. O passo 4 deve ser repetido caso a estação inicial seja alterada.
+<br>5. O passo 4 deve ser repetido caso a estação inicial seja alterada. <br><br>
 
 
 
