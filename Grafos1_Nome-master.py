@@ -1,11 +1,18 @@
 from tkinter import *
+from tkinter import ttk
 from PIL import ImageTk, Image
 import os
 
 root = Tk()
+root.title("BFS e DFS no metrô de Brasília")
 
 bemVindo = Label(root, text="Bem-vindo(a)!")
-bemVindo.pack(pady=20)
+bemVindo.pack()
+
+imagem = Image.open("metro.jpg").resize((600, 383), Image.ANTIALIAS)
+imagem = ImageTk.PhotoImage(imagem)
+imgLabel = Label(image=imagem)
+imgLabel.pack()
 
 
 Metrobsb = {'102 Sul': ['Galeria', '108 Sul'],
@@ -42,7 +49,6 @@ def BFS(G, s, visited):
 
     while queue:
         s = queue.pop(0)
-        print(s, end=" ")
 
         for neighbour in G[s]:
             if neighbour not in visited:
@@ -60,26 +66,40 @@ def DFS(G, s, visited):
     return visited
 
 
+def buscar():
+    noDePartida = clicked.get()
+    print(noDePartida)
+    bfs = str(BFS(Metrobsb, noDePartida, []))
+    dfs = str(DFS(Metrobsb, noDePartida, []))
+    resultBfs.config(text=bfs)
+    resultDfs.config(text=dfs)
+
+
 label = Label(text="Selecione a parada (o nó):")
 label.pack()
 
-paradas = Listbox(root, selectmode=BROWSE)
+options = []
 for item in Metrobsb:
-    paradas.insert(END, item)
+    options.append(item)
+clicked = StringVar()
+clicked.set(options[0])
+
+paradas = OptionMenu(root, clicked, *options)
 paradas.pack(padx=100)
-
-noDePartida = paradas.get(ANCHOR)
-print(noDePartida)
-
-
-def buscar(G=Metrobsb, s=noDePartida, visited=[]):
-    resultBfs = BFS(G, s, visited)
-    resultDfs = DFS(G, s, visited)
-    result = Label(text=(resultBfs + resultDfs))
-    result.pack()
-
 
 fazerBuscas = Button(root, text="Fazer buscas BFS e DFS", command=buscar)
 fazerBuscas.pack(pady=20)
+
+bfsLabel = Label(root, text="BFS:", pady=5)
+bfsLabel.pack()
+global resultBfs
+resultBfs = Label(root, text="", wraplength=800, pady=5, padx=20)
+resultBfs.pack()
+
+dfsLabel = Label(root, text="DFS:", pady=5)
+dfsLabel.pack()
+global resultDfs
+resultDfs = Label(root, text="", wraplength=800, pady=5, padx=20)
+resultDfs.pack()
 
 root.mainloop()
