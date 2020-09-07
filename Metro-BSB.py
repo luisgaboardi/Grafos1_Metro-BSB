@@ -6,7 +6,7 @@ import os
 root = Tk()
 root.title("BFS e DFS no metrô de Brasília")
 
-bemVindo = Label(root, text="Bem-vindo(a)!")
+bemVindo = Label(root, text="\nBem-vindo(a)!\n")
 bemVindo.pack()
 
 imagem = Image.open("metro.jpg").resize((600, 383), Image.ANTIALIAS)
@@ -75,7 +75,7 @@ def buscar():
     resultDfs.config(text=dfs)
 
 
-label = Label(text="Selecione a parada (o nó):")
+label = Label(text="\nSelecione a parada (o nó):\n")
 label.pack()
 
 options = []
@@ -93,13 +93,13 @@ fazerBuscas.pack(pady=20)
 bfsLabel = Label(root, text="BFS:", pady=5)
 bfsLabel.pack()
 global resultBfs
-resultBfs = Label(root, text="", wraplength=800, pady=5, padx=20)
+resultBfs = Label(root, text="", wraplength=600, pady=5, padx=20)
 resultBfs.pack()
 
 dfsLabel = Label(root, text="DFS:", pady=5)
 dfsLabel.pack()
 global resultDfs
-resultDfs = Label(root, text="", wraplength=800, pady=5, padx=20)
+resultDfs = Label(root, text="\n\n", wraplength=600, pady=5, padx=20)
 resultDfs.pack()
 
 root.mainloop()
