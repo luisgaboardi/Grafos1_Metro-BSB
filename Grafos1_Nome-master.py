@@ -1,6 +1,14 @@
 from tkinter import *
+from PIL import ImageTk, Image
+import os
 
-metrobsb = {'102 Sul': ['Galeria', '104 Sul'],
+root = Tk()
+
+bemVindo = Label(root, text="Bem-vindo(a)!")
+bemVindo.pack(pady=20)
+
+
+Metrobsb = {'102 Sul': ['Galeria', '108 Sul'],
             '108 Sul': ['102 Sul', '112 Sul'],
             '112 Sul': ['108 Sul', '114 Sul'],
             '114 Sul': ['112 Sul', 'Terminal Asa Sul'],
@@ -26,15 +34,52 @@ metrobsb = {'102 Sul': ['Galeria', '104 Sul'],
             'Terminal Asa Sul': ['114 Sul', 'Shopping']
             }
 
-root = Tk()
 
-myLabel = Label(root, text="Bem-vindo!")
-myLabel.pack()
+def BFS(G, s, visited):
+    queue = []
+    visited.append(s)
+    queue.append(s)
 
-canvas = Canvas(root, height=700, width=700, bg="#263D42")
-canvas.pack()
+    while queue:
+        s = queue.pop(0)
+        print(s, end=" ")
 
-start = Button(root, text="Iniciar", padx=10, pady=5, fg="white", bg="#263D42")
-start.pack()
+        for neighbour in G[s]:
+            if neighbour not in visited:
+                visited.append(neighbour)
+                queue.append(neighbour)
+
+    return visited
+
+
+def DFS(G, s, visited):
+    if s not in visited:
+        visited.append(s)
+        for neighbour in G[s]:
+            DFS(G, neighbour, visited)
+    return visited
+
+
+label = Label(text="Selecione a parada (o nó):")
+label.pack()
+
+paradas = Listbox(root, selectmode=BROWSE)
+for item in Metrobsb:
+    paradas.insert(END, item)
+paradas.pack(padx=100)
+
+noDePartida = paradas.get(ANCHOR)
+print(noDePartida)
+
+
+def buscar(G=Metrobsb, s=noDePartida, visited=[]):
+    resultBfs = BFS(G, s, visited)
+    resultDfs = DFS(G, s, visited)
+    result = Label(text=(resultBfs + resultDfs))
+    result.pack()
+
+
+fazerBuscas = Button(root, text="Fazer buscas BFS e DFS", command=buscar)
+fazerBuscas.pack(pady=20)
 
 root.mainloop()
