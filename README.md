@@ -9,6 +9,9 @@
 | 16/0144132  |  Rodrigo Fernandes |
 | 18/0022962  |  Luís Guilherme G. Lins |
 
+## Link para vídeo explicativo:
+https://www.loom.com/share/f8ec74d0bc02428699eb569b6a93df7e
+
 ## Sobre 
 &nbsp;&nbsp;&nbsp;&nbsp; Apesar da simplicidade do sistema metroviário de Brasília, os mapas nunca deixaram de ser essenciais para o planejamento da rota de um usuário. Diante da realidade de um passageiro identificar onde está e para onde vai, mediante o sistema de metrô de Brasília, e os conhecimentos na área do estudo e busca em grafos, este aplicativo tem como objetivo determinar, a partir dos métodos BFS (Breadth-First Search) e DFS (Depth-First Search), quais estações são alcançáveis a partir de um determinado ponto de início.
 
